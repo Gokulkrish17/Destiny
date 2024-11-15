@@ -58,7 +58,7 @@ const Message = () => {
     return (
         <div className="w-full">
         <Dashboard/>
-        <div className="ml-[2rem] mr-[2rem] relative top-8">
+        <div className="ml-[18rem] mr-[2rem] relative top-24">
         <div className="border border-gray-300 rounded-lg overflow-hidden">
                 <DataTable value={userdata} paginator rows={10} className="datatable-basic custom-header ">
                     <Column field="id" header="ID"  className="border border-gray-300 px-2"/>
