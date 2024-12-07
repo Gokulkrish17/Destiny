@@ -3,6 +3,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import axios from "axios";
 import Dashboard from "./dashboard";
+import Navbar from "./navbar";
 
 
 const Message = () => {
@@ -11,9 +12,16 @@ const Message = () => {
 
     // Fetch user data
     const fetchUsers = async () => {
+        const token = localStorage.getItem('token');
         try {
-            const response = await axios.get('http://localhost:8080/api/auth/users/descending');
-            const usersData = response.data.map(user => ({
+            const response = await axios.get('http://localhost:8080/api/auth/users/descending',{
+                headers : {
+                    'Authorization' : `Bearer ${token}`
+                }
+            });
+            const usersData = response.data
+            .filter(user => user.role === 'USER')
+            .map(user => ({
                 id: user.id,
                 UserName: user.name,
                 Email: user.email,
@@ -28,8 +36,13 @@ const Message = () => {
     };
     // Fetch OTP data
     const fetchOtps = async () => {
+        const token = localStorage.getItem('token')
         try {
-            const response = await axios.get('http://localhost:8080/api/auth/otps/descending');
+            const response = await axios.get('http://localhost:8080/api/auth/otps/descending',{
+                headers: {
+                    'Authorization' : `Bearer ${token}`
+                }
+            });
             const otpsData = response.data.map(otp => ({
                 id: otp.id, // Ensure this matches the key in the OTP response that links to the user
                 Otp:otp.otp,
@@ -58,6 +71,7 @@ const Message = () => {
     return (
         <div className="w-full">
         <Dashboard/>
+        <Navbar/>   
         <div className="ml-[18rem] mr-[2rem] relative top-24">
         <div className="border border-gray-300 rounded-lg overflow-hidden">
                 <DataTable value={userdata} paginator rows={10} className="datatable-basic custom-header ">
