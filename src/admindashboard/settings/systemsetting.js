@@ -36,7 +36,6 @@ const handleOnChange = (e) => {
 
 const color = JSON.stringify(setting?.color);
 
-
   return (
     <>
       <Dashboard />
