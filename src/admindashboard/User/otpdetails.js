@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import Dashboard from "./dashboard";
-import Navbar from "./navbar";
+import { useNavigate, useParams } from "react-router-dom";
+import Dashboard from "../Common/dashboard";
+import Navbar from "../Common/navbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { DataTable } from "primereact/datatable";
@@ -10,6 +10,7 @@ import moment from "moment";
 const OtpDetails = () => {
     const { email } = useParams();
     const [otpDetails, setOtpDetails] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchOtpDetails = async () => {
@@ -50,6 +51,15 @@ const OtpDetails = () => {
             <Dashboard />
             <Navbar />
             <div className="ml-[18rem] mr-[2rem] relative top-24 z-10 pb-8">
+            <div className="flex items-center text-sm font-medium text-gray-500 ml-1 mb-4">
+                    <span>Menu</span>
+                    <span className="mx-2 text-gray-400">&gt;</span>
+                    <span className="text-gray-500">User</span>
+                    <span className="mx-2 text-gray-400">&gt;</span>
+                    <span className="text-gray-500 cursor-pointer" onClick={() => navigate('/email')}>Mail</span>
+                    <span className="mx-2 text-gray-400">&gt;</span>
+                    <span className="text-gray-300 ">{email}</span>
+                </div>
                 <div className="border border-gray-300 rounded-lg overflow-hidden">
                     <DataTable
                         value={otpDetails}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Dashboard from "../dashboard";
-import Navbar from "../navbar";
+import Dashboard from "../Common/dashboard";
+import Navbar from "../Common/navbar";
 import axios from "axios";
 
 const Terms = () =>{

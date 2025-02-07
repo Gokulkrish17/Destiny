@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../logo.png"
+import logo from "../../logo.png"
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useNavigate } from 'react-router-dom';
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./admindashboard/dashboard";
-import Email from "./admindashboard/email";
-import Message from "./admindashboard/message";
-import UserList from "./admindashboard/userlist";
+import Dashboard from "./admindashboard/Common/dashboard";
+import Email from "./admindashboard/User/email";
+import Message from "./admindashboard/User/message";
+import UserList from "./admindashboard/User/userlist";
 import "./App.css";
 import "./styles.css";
-import UserDetails from "./admindashboard/userdetails";
-import OtpDetails from "./admindashboard/otpdetails";
+import UserDetails from "./admindashboard/User/userdetails";
+import OtpDetails from "./admindashboard/User/otpdetails";
 import SystemSettings from "./admindashboard/settings/systemsetting";
 import AdminHealthChecker from "./admindashboard/admin";
 import SignIn from "./admindashboard/Login/signin";
@@ -19,6 +19,13 @@ import ForgetPassword from "./admindashboard/Login/forgetpassword";
 import ResetPassword from "./admindashboard/Login/resetpassword";
 import PrivateRoute from "./admindashboard/Login/privateroute";
 import CountryCode from "./admindashboard/Admin/Countrycode";
+import ArtistDetails from "./admindashboard/profession/artistDetail";
+import ArtistInformation from "./admindashboard/profession/artistInformation";
+import DashboardPage from "./admindashboard/User/dashboardpage";
+import Promotion from "./admindashboard/User/promotion";
+import Birthday from "./admindashboard/User/birthday";
+import GeneralSetting from "./admindashboard/User/generalsetting";
+import DeleteUser from "./admindashboard/User/deleteuser";
 
 function App() {
   return (
@@ -48,6 +55,13 @@ function App() {
                 <Route path="/logged_user/:email/detail" element={<LoginDetails />} />
                 <Route path="/admin-profile" element={<AdminProfile />} />
                 <Route path="/admin-profile/:email" element={<AdminDetails />} />
+                <Route path="/artist-crew-details" element={<ArtistDetails/>} />
+                <Route path="/artist/:id/detail" element={<ArtistInformation/>} />
+                <Route path="/dashboard-page" element={<DashboardPage/>} />
+                <Route path="/promotion" element={<Promotion/>} />
+                <Route path="/birthday" element={<Birthday/>} />
+                <Route path="/general-settings" element={<GeneralSetting/>} />
+                <Route path="/delete-user" element={<DeleteUser />} />
               </Routes>
             </PrivateRoute>
           }

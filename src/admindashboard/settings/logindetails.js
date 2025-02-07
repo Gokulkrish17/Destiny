@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Dashboard from "../dashboard";
-import Navbar from "../navbar";
+import Dashboard from "../Common/dashboard";
+import Navbar from "../Common/navbar";
 
 const LoginDetails = () => {
   const [userData, setUserData] = useState({});
   const [user, setUser] = useState();
   const [isEditing, setIsEditing] = useState(false); // State to control edit mode
   const { email } = useParams();
+  const [role, setRole] = useState("");
 
   const navigate = useNavigate();
 
@@ -93,6 +94,21 @@ const LoginDetails = () => {
   useEffect(() => {
     fetchUserLoggedInData();
     fetchUserDetails();
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        // Decode JWT token
+        const base64Url = token.split(".")[1]; // Get the payload part
+        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/"); // Fix encoding
+        const jsonPayload = JSON.parse(atob(base64)); // Decode
+
+        setRole(jsonPayload.roles); // Store role in state
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+
   }, [fetchUserLoggedInData,fetchUserDetails]);
 
   return (
@@ -100,7 +116,18 @@ const LoginDetails = () => {
       <Dashboard />
       <Navbar />
 
+      
+
       <form className="contact-us-form">
+      <div className="flex items-center text-sm font-medium text-gray-500 ml-1 mb-10">
+          <span>Menu</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-500">Settings</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-500 cursor-pointer" onClick={() => navigate('/logged_user-profile')}>Logged User</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-300">{userData?.name}</span>
+        </div>
         <div className="contact-us-row">
           <label className="contact-us-label">Name</label>
           <input
@@ -153,23 +180,28 @@ const LoginDetails = () => {
           />
         </div>
 
-        {isEditing ? (
-          <button
-            className="p-2 bg-cta hover:bg-opacity-90 rounded-md text-white float-right mb-3"
-            type="button"
-            onClick={handleSaveClick}
-          >
-            Save
-          </button>
-        ) : (
-          <button
-            className="p-2 mr-2 bg-blue-600 hover:bg-opacity-90 rounded-md text-white float-right mb-3"
-            type="button"
-            onClick={handleEditClick}
-          >
-            Edit
-          </button>
-        )}
+        {/* Hide both buttons if role is "ADMIN" */}
+      {role === "SUPER_ADMIN" && (
+        <>
+          {isEditing ? (
+            <button
+              className="p-2 bg-cta hover:bg-opacity-90 rounded-md text-white float-right mb-3"
+              type="button"
+              onClick={handleSaveClick}
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              className="p-2 mr-2 bg-blue-600 hover:bg-opacity-90 rounded-md text-white float-right mb-3"
+              type="button"
+              onClick={handleEditClick}
+            >
+              Edit
+            </button>
+          )}
+        </>
+      )}
       </form>
     </>
   );

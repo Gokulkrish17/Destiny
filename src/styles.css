@@ -717,7 +717,7 @@ color: #F85454;
 
 .contact-us-label {
   margin-right: 4rem; 
-  width: 8rem; 
+  width: 15rem; 
   text-align: right; 
 }
 .user-detail-label {
@@ -745,6 +745,10 @@ color: #F85454;
 
 .contact-us-input:focus{
   outline: none; 
+}
+
+.user-detail-input:focus{
+  outline: none;
 }
 
 

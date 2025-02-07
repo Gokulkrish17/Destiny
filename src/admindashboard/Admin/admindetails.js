@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Dashboard from "../dashboard";
-import Navbar from "../navbar";
+import { useNavigate, useParams } from "react-router-dom";
+import Dashboard from "../Common/dashboard";
+import Navbar from "../Common/navbar";
 
 const AdminDetails = () => {
   const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false); // State to control edit mode
   const { email } = useParams();
+  const navigate = useNavigate();
 
   // Fetch user data
   const fetchUserLoggedInData = useCallback(async () => {
@@ -81,6 +82,15 @@ const AdminDetails = () => {
       <Navbar />
 
       <form className="contact-us-form">
+      <div className="flex items-center text-sm font-medium text-gray-500 ml-1 mb-10">
+          <span>Menu</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-500">Settings</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-500 cursor-pointer" onClick={() => navigate('/admin-profile')}>Admin User</span>
+          <span className="mx-2 text-gray-400">&gt;</span>
+          <span className="text-gray-300">{userData?.name}</span>
+        </div>
         <div className="contact-us-row">
           <label className="contact-us-label">Name</label>
           <input
