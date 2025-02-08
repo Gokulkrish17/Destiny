@@ -22,7 +22,7 @@ const Header = () => {
 
   const fetchHeader = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/settings/header/HEADER');
+      const response = await axios.get('https:192.168.1.29:8080/settings/header/HEADER');
       setHeader(response.data)
     } catch (error) {
       console.error(error);
@@ -58,7 +58,7 @@ const Header = () => {
     formData.append("logoImage", file); // Attach the actual file object
 
     try {
-      const response = await axios.put('http://localhost:8080/settings/update/header/HEADER', formData, {
+      const response = await axios.put('https:192.168.1.29:8080/settings/update/header/HEADER', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

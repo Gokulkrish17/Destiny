@@ -26,12 +26,12 @@ const ForgetPassword = () => {
   
     try {
       const checkResponse = await axios.post(
-        `http://localhost:8080/api/admin/check-email/${data.email}`
+        `https:192.168.1.29:8080/api/admin/check-email/${data.email}`
       );
   
       if (checkResponse.status === 200) {
         const otpResponse = await axios.post(
-          "http://localhost:8080/api/admin/forgot-password",
+          "https:192.168.1.29:8080/api/admin/forgot-password",
           data
         );
   

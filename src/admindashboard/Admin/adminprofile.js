@@ -15,7 +15,7 @@ const AdminProfile = () => {
     const fetchAdminProfile = async() => {
         const token = localStorage.getItem('token');
         try{
-            const response = await axios.get('http://localhost:8080/api/admin/all-profiles',{
+            const response = await axios.get('https:192.168.1.29:8080/api/admin/all-profiles',{
                 headers : {
                     'Authorization' : `Bearer ${token}`
                 }

@@ -13,7 +13,7 @@ const Footer = () => {
 
    const fetchFooter = async() => {
       try {
-        const response = await axios.get('http://localhost:8080/settings/footer/FOOTER');
+        const response = await axios.get('https:192.168.1.29:8080/settings/footer/FOOTER');
         setFooter(response.data)
         console.log(response.data);
         
@@ -37,7 +37,7 @@ const Footer = () => {
   const updateFooter = async(e) => {
     e.preventDefault();
     try {
-        const response = await axios.put('http://localhost:8080/settings/update/footer/FOOTER',null,
+        const response = await axios.put('https:192.168.1.29:8080/settings/update/footer/FOOTER',null,
             {
                 params : {
                     textColor : footer.textColor,

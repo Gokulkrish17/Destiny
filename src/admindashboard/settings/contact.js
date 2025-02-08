@@ -15,7 +15,7 @@ const ContactUs = () => {
   const fetchContact = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/settings/get-contact-details/CONTACT_US"
+        "https:192.168.1.29:8080/settings/get-contact-details/CONTACT_US"
       );
       setContact(response.data);
     } catch (error) {
@@ -31,7 +31,7 @@ const ContactUs = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8080/settings/update-contact/CONTACT_US`,
+        `https:192.168.1.29:8080/settings/update-contact/CONTACT_US`,
         null,
         {
           params: {

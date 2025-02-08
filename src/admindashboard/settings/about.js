@@ -8,7 +8,7 @@ const AboutUS = () => {
 
     const fetchAbout = async() => {
         try {
-            const response = await axios.get('http://localhost:8080/settings/ABOUT_US');
+            const response = await axios.get('https:192.168.1.29:8080/settings/ABOUT_US');
             setAbout(response.data)            
         } catch (error) {
             console.error(error);
@@ -23,7 +23,7 @@ const AboutUS = () => {
     const updataAbout = async(e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/settings/update/ABOUT_US?content=${about}`,{
+            const response = await fetch(`https:192.168.1.29:8080/settings/update/ABOUT_US?content=${about}`,{
                 method: 'PATCH'
             })
             if(response.ok){

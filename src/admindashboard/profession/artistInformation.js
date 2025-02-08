@@ -24,7 +24,7 @@ const ArtistInformation = () => {
   const getArtistInformation = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get(`http://localhost:8080/api/profession/get-all-details/${id}`,
+      const response = await axios.get(`https:192.168.1.29:8080/api/profession/get-all-details/${id}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`

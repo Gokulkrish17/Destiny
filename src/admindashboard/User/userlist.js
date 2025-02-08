@@ -16,13 +16,13 @@ const UserList = () => {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/auth/users/descending', {
+            const response = await axios.get('https:192.168.1.29:8080/api/auth/users/descending', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
             const userData = response.data
-                .filter(user => user.role === 'USER')
+                // .filter(user => user.role === 'USER')
                 .map(user => ({
                     id: user.id,
                     UserName: user.name,

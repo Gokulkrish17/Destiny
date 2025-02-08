@@ -16,7 +16,7 @@ const OtpDetails = () => {
         const fetchOtpDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:8080/api/auth/otp-details/${email}`,{
+                const response = await axios.get(`https:192.168.1.29:8080/api/auth/otp-details/${email}`,{
                     headers: {
                         'Authorization' : `Bearer ${token}`
                     }

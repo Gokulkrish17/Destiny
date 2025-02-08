@@ -14,7 +14,7 @@ const Message = () => {
     const fetchUsers = async () => {
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.get('http://localhost:8080/api/auth/users/descending', {
+            const response = await axios.get('https:192.168.1.29:8080/api/auth/users/descending', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -38,7 +38,7 @@ const Message = () => {
     const fetchOtps = async () => {
         const token = localStorage.getItem('token')
         try {
-            const response = await axios.get('http://localhost:8080/api/auth/otps/descending', {
+            const response = await axios.get('https:192.168.1.29:8080/api/auth/otps/descending', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -8,7 +8,7 @@ const Privacy = () => {
 
     const fetchPrivacy = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/settings/PRIVACY_POLICY')
+            const response = await axios.get('https:192.168.1.29:8080/settings/PRIVACY_POLICY')
             setPrivacy(response.data)
         } catch (error) {
             console.error(error);
@@ -23,7 +23,7 @@ const Privacy = () => {
     const updatePrivacy = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.patch(`http://localhost:8080/settings/update/PRIVACY_POLICY?content=${privacy}`);
+            const response = await axios.patch(`https:192.168.1.29:8080/settings/update/PRIVACY_POLICY?content=${privacy}`);
             if(response.ok){
                 alert("Details updated")
                 fetchPrivacy();

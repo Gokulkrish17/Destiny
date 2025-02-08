@@ -21,7 +21,7 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     try {
       // Add the email to the data being sent in the reset-password request
-      const response = await axios.post("http://localhost:8080/api/admin/reset-password", {
+      const response = await axios.post("https:192.168.1.29:8080/api/admin/reset-password", {
         ...data,
         email: email // Include the email here
       });

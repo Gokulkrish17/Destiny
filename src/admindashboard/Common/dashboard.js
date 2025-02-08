@@ -24,7 +24,7 @@ const Dashboard = () => {
     const fetchCurrentUser = async () => {
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.get('http://localhost:8080/api/admin/adminuser/get-profile', {
+            const response = await axios.get('https:192.168.1.29:8080/api/admin/adminuser/get-profile', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

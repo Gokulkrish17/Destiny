@@ -2,7 +2,7 @@
 
 export const fetchUserProfile = async (token) => {
     try {
-      const response = await fetch('http://localhost:8080/api/auth/adminuser/get-profile', {
+      const response = await fetch('https:192.168.1.29:8080/api/auth/adminuser/get-profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`

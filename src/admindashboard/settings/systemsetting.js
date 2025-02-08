@@ -10,7 +10,7 @@ const SystemSettings = () => {
   const fetchSetting = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get('http://localhost:8080/settings/get-setting/1', {
+      const response = await axios.get('https:192.168.1.29:8080/settings/get-setting/1', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -66,7 +66,7 @@ const SystemSettings = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/settings/update/1`, // Replace with dynamic ID if needed
+        `https:192.168.1.29:8080/settings/update/1`, // Replace with dynamic ID if needed
         formData,
         {
           headers: {

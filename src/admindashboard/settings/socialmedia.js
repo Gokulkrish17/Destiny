@@ -17,7 +17,7 @@ const SocialMedia = () => {
 
     const fetchSocialMediaURL = useCallback( async() => {
         try {
-            const response = await axios.get('http://localhost:8080/settings/social-media/SOCIAL_MEDIA');
+            const response = await axios.get('https:192.168.1.29:8080/settings/social-media/SOCIAL_MEDIA');
             setSocialMedia(response.data);
         } catch (error) {
             console.error("Error fetching social media url",error);
@@ -39,7 +39,7 @@ const SocialMedia = () => {
     const updateSocialMedia = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.put('http://localhost:8080/settings/update/social-media/SOCIAL_MEDIA',
+            const response = await axios.put('https:192.168.1.29:8080/settings/update/social-media/SOCIAL_MEDIA',
                 null,
                 {
                     params : {

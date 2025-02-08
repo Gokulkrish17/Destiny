@@ -9,7 +9,7 @@ const Terms = () =>{
 
     const fetchTerms = async() => {
         try {
-            const response = await axios.get('http://localhost:8080/settings/TERMS_AND_CONDITIONS');
+            const response = await axios.get('https:192.168.1.29:8080/settings/TERMS_AND_CONDITIONS');
             setTerms(response.data);
         } catch (error) {
             console.error(error);
@@ -23,7 +23,7 @@ const Terms = () =>{
     const updateTerms = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.patch(`http://localhost:8080/settings/update/TERMS_AND_CONDITIONS?content=${terms}`);
+            const response = await axios.patch(`https:192.168.1.29:8080/settings/update/TERMS_AND_CONDITIONS?content=${terms}`);
             if(response.ok){
                 alert("Details updated")
                 fetchTerms();

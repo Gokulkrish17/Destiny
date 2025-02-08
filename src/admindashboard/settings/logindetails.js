@@ -17,7 +17,7 @@ const LoginDetails = () => {
   const fetchUserLoggedInData = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get(`http://localhost:8080/api/auth/get-profile/${email}`, {
+      const response = await axios.get(`https:192.168.1.29:8080/api/auth/get-profile/${email}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -31,7 +31,7 @@ const LoginDetails = () => {
   const fetchUserDetails = useCallback(async() => {
     const token = localStorage.getItem('token');
     try{
-      const response = await axios.get(`http://localhost:8080/api/users/getBy-email?email=${email}`,{
+      const response = await axios.get(`https:192.168.1.29:8080/api/users/getBy-email?email=${email}`,{
         headers : {
           'Authorization' : `Bearer ${token}`
         }
@@ -52,7 +52,7 @@ const LoginDetails = () => {
     const token = localStorage.getItem('token');
     try {
       // Construct URL with query parameters using userData state
-      const url = `http://localhost:8080/api/auth/request-reset/${userData.id}/${user?.userid}?email=${encodeURIComponent(userData.email)}&newPassword=${encodeURIComponent(userData.password)}&name=${encodeURIComponent(userData.name)}&phoneNumber=${encodeURIComponent(userData.phoneNumber)}`;
+      const url = `https:192.168.1.29:8080/api/auth/request-reset/${userData.id}/${user?.userid}?email=${encodeURIComponent(userData.email)}&newPassword=${encodeURIComponent(userData.password)}&name=${encodeURIComponent(userData.name)}&phoneNumber=${encodeURIComponent(userData.phoneNumber)}`;
   
       // Send the request with query parameters
       await axios.post(
